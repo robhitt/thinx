@@ -20,17 +20,22 @@ window.onload = function () {
   desktopImg.forEach( image => image.addEventListener("click", toggleModal)); 
   modalImg.forEach( image => image.addEventListener("click", toggleModal)); 
 
-  function toggleModal() {
+  function toggleModal(event) {
     const mainContainer = document.querySelector(".main-container");
     const modal = document.querySelector(".modal");
-    console.log(mainContainer.style.display);
     
     if (mainContainer.style.display === "none") {
       mainContainer.style.display = "block";
       modal.style.display = "none";
+      window.scrollTo(0, 0);
+      
     } else {
+      let targetImage = event.currentTarget.dataset.img;
+      
       mainContainer.style.display = "none";
       modal.style.display = "block";
+      const modalFocus = document.querySelector(`.modal-${targetImage}`);
+      modalFocus.scrollIntoView();
     }
   }
   
