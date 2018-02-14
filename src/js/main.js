@@ -31,7 +31,6 @@ window.onload = function () {
       
     } else {
       let targetImage = event.currentTarget.dataset.img;
-      
       mainContainer.style.display = "none";
       modal.style.display = "block";
       const modalFocus = document.querySelector(`.modal-${targetImage}`);
