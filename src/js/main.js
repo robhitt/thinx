@@ -2,7 +2,6 @@ window.onload = function () {
   onResize();
 
   // Event Listener on window resize
-  // don't forget to add a debounce function
   window.addEventListener("resize", onResize);
 
   function onResize() {

@@ -18,7 +18,7 @@
 </head>
 
 <body>
-  <div class="main-container">
+  <main class="main-container">
     <div class="hero-container">
 
       <div id="mobile-carousel" class="carousel slide" data-ride="carousel" data-interval="false" data-keyboard="true">
@@ -43,11 +43,21 @@
           </div>
         </div>
         <ol class="carousel-indicators">
-          <li data-target="#mobile-carousel" data-slide-to="0" class="active"></li>
-          <li data-target="#mobile-carousel" data-slide-to="1"></li>
-          <li data-target="#mobile-carousel" data-slide-to="2"></li>
-          <li data-target="#mobile-carousel" data-slide-to="3"></li>
-          <li data-target="#mobile-carousel" data-slide-to="4"></li>
+          <li data-target="#mobile-carousel" data-slide-to="0" class="active">
+            <div></div>
+          </li>
+          <li data-target="#mobile-carousel" data-slide-to="1">
+
+          </li>
+          <li data-target="#mobile-carousel" data-slide-to="2">
+
+          </li>
+          <li data-target="#mobile-carousel" data-slide-to="3">
+
+          </li>
+          <li data-target="#mobile-carousel" data-slide-to="4">
+
+          </li>
           <li data-target="#mobile-carousel" data-slide-to="5"></li>
         </ol>
       </div>
@@ -96,28 +106,28 @@
 
           <div class="color-selector">
             <div class="color-box color-box-white">color</div>
-            <div class="color-box color-box-black">
+            <button type="button" class="color-box color-box-black">
               <span>black</span>
               <span class="color-box-black-check color-box-black-check-active"></span>
-            </div>
-            <div class="color-box color-box-beige">
+            </button>
+            <button type="button" class="color-box color-box-beige">
               <span>beige</span>
               <span class="color-box-beige-check"></span>
-            </div>
+            </button>
           </div>
 
           <div class="quantity-container">
-            <div class="quantity-element quantity-reduce-product quantity-press">
+            <button type="button" class="quantity-element quantity-reduce-product quantity-press">
               <span class="pressed-item">-</span>
-            </div>
+            </button>
             <div class="quantity-element quantity quantity-press">
               <span>quantity (</span>
               <span class="quantity-counter">0</span>
               <span>)</span>
             </div>
-            <div class="quantity-element quantity-add-product quantity-press">
+            <button type="button" class="quantity-element quantity-add-product quantity-press">
               <span class="pressed-item">+</span>
-            </div>
+            </button>
           </div>
 
           <div class="custom-dropdown">
@@ -136,9 +146,9 @@
             what's my size?
           </div>
 
-          <div class="add-to-cart">
+          <button type="button" class="add-to-cart">
             add to cart
-          </div>
+          </button>
 
           <div class="cycle-set">
             build a cycle set and save up to 20%
@@ -186,10 +196,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 
   <div class="custom-modal zoom-out">
-
     <div class="modal-1">
       <img src="./assets/top-image/highwaist_black_front_2_1024x1024.jpg" alt="High Waist Black Back Underwear Front" class="img-modal">
     </div>
