@@ -108,7 +108,7 @@ button {
 }
 
 .color-box-white {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(248, 248, 249);
   font-size: 12px;
 }
 
@@ -141,6 +141,7 @@ button {
   font-size: 16px;
   box-sizing: border-box;
   line-height: 18px;
+  background-color: rgb(248, 248, 249);
 }
 
 .quantity-reduce-product,
@@ -153,9 +154,14 @@ button {
 
 .pressed-item {
   display: inline-block;
+  background-color: rgb(248, 248, 249);
 }
 
-.quantity-press:active>.pressed-item {
+.pressed-item > span {
+  /* background-color: rgb(248, 248, 249); */
+}
+
+.quantity-press:active > .pressed-item {
   transform: translate(1px, 1px);
 }
 
@@ -194,6 +200,7 @@ button {
   -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
+  background-color: rgb(248, 248, 249);
 }
 
 /* Hiding the select arrow for IE10 */
@@ -250,6 +257,7 @@ button {
   text-transform: lowercase;
   font-size: 12px;
   margin-bottom: 15px;
+  border: 0;
 }
 
 .add-to-cart:active {
