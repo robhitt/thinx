@@ -7,9 +7,13 @@ window.onload = function () {
   function onResize() {
     let height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
+    // grab hero container
+    const heroContainer = document.querySelector(".hero-container");
+    heroContainer.style.height = height;
+
     // grab middle container height to allow scrolling with overflow
-    const heroCenter = document.querySelector(".hero-desktop");
-    heroCenter.style.height = height;
+    // const heroCenter = document.querySelector(".hero-desktop");
+    // heroCenter.style.height = height;
   }
 
   // Toggle Modal Logic

@@ -16,8 +16,10 @@ button {
 .hero-container {
   font-size: 0;
   text-align: center;
-  height: 100vh;
+  /* height: 100vh; */
   background-color: rgb(248, 248, 249);
+  overflow-y: auto;
+  position: relative;
 }
 
 .hero {
@@ -34,6 +36,11 @@ button {
 .hero-left,
 .hero-right {
   width: 27%;
+  position: fixed;
+}
+
+.hero-left {
+  left: 0;
 }
 
 .hero-left-mobile,
@@ -44,7 +51,7 @@ button {
 .hero-desktop {
   font-size: 12px;
   width: 46%;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   text-align: center;
 }
 
