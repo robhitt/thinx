@@ -9,6 +9,10 @@
   font-family: "Graphik Medium";
 }
 
+button {
+  cursor: pointer;
+}
+
 .hero-container {
   font-size: 0;
   text-align: center;
@@ -100,6 +104,7 @@
   box-sizing: border-box;
   border: 1px solid rgb(0, 0, 0);
   letter-spacing: 1px;
+  text-align: left;
 }
 
 .color-box-white {
@@ -126,7 +131,6 @@
   content: "\2714";
 }
 
-/* Quantity/Counter container */
 .quantity-container {
   font-size: 0;
   margin-bottom: 15px;
@@ -167,7 +171,6 @@
   vertical-align: top;
 }
 
-/* Size selector */
 .custom-dropdown {
   position: relative;
   display: inline-block;
@@ -190,9 +193,10 @@
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
+  cursor: pointer;
 }
 
-/*Hiding the select arrow for IE10*/
+/* Hiding the select arrow for IE10 */
 .custom-dropdown select::-ms-expand {
   display: none;
 }
@@ -204,7 +208,6 @@
   pointer-events: none;
 }
 
-/*  Custom dropdown arrow */
 .custom-dropdown::after {
   content: "\002304";
   height: 1em;
@@ -215,7 +218,6 @@
   margin-top: -.5em;
 }
 
-/*  Custom dropdown arrow cover */
 .custom-dropdown::before {
   width: 2em;
   right: 0;
@@ -358,9 +360,9 @@
 
   .carousel-indicators li {
     background-color: rgba(0, 0, 0, .5);
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
+    width: 7px;
+    height: 7px;
+    border-radius: 100%;
     margin: 0 8px;
     cursor: pointer;
   }
@@ -390,7 +392,6 @@
   
   .hero-full-height {
     display: inline;
-    width: 100%;
   }
 
   .cycle-set {
