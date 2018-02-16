@@ -9,12 +9,52 @@ window.onload = function () {
 
     // grab hero container
     const heroContainer = document.querySelector(".hero-container");
+    // console.log(heroContainer.offsetHeight);
+     
+    
+    // console.log("hero height", heroContainer.innerHeight);
+    
     heroContainer.style.height = height;
 
+    // original branch code below
     // grab middle container height to allow scrolling with overflow
     // const heroCenter = document.querySelector(".hero-desktop");
     // heroCenter.style.height = height;
   }
+
+  // Debounce function for use with scroller to avoid many events
+  function debounce(func, wait = 20, immediate = true) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  }
+  
+  function checkSlide(event) {
+    const heroContainer = document.querySelector(".hero-container");
+    const heightToHorizonLine = heroContainer.offsetHeight;
+    const currentScrollHeight = window.scrollY + window.innerHeight;
+    // console.log("Height To Horizon Line: ", heightToHorizonLine);
+    // console.log("Current Scroll Height: ", currentScrollHeight); 
+
+    if (currentScrollHeight > heightToHorizonLine) {
+      console.log("Hello Rob");
+      const heroLeft = document.querySelector(".hero-left");
+      const heroRight = document.querySelector(".hero-right");
+      heroLeft.style.position = "absolute";
+      heroRight.style.position = "absolute";
+    }
+  }
+
+  window.addEventListener("scroll", debounce(checkSlide, 15));
 
   // Toggle Modal Logic
   const desktopImg = document.querySelectorAll(".pop-img");
