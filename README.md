@@ -5,7 +5,7 @@
 Creation of a sample product page including:
 * Product image magnet scroller for desktop viewports
 * Product carousel for mobile viewports
-* Pop-out product image into scrollable modal view from both magnet hero container and carousel
+* Pop-out product image into scrollable modal view from both the magnet hero container and carousel
 * Color selector
 * Quantity selector
 * Clothing size dropdown
@@ -27,6 +27,7 @@ Fire up the index.html file in any web browser and you'll be good to go!
 ## Contributors
 
 #### Rob Hitt
+* [E-mail](mailto:robhitt@gmail.com)
 * [Website](https://www.robhitt.com/)
 * [Resume](http://www.robhitt.com/resume)
 * [LinkedIn](http://www.linkedin.com/in/robhitt)
