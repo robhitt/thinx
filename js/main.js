@@ -1,6 +1,31 @@
+
+
+
+// // https://learnwebcode.github.io/json-example/animals-1.json
+
+// var ourRequest = new XMLHttpRequest();
+// ourRequest.open("GET", "https://learnwebcode.github.io/json-example/animals-1.json");
+// ourRequest.onload = function() {
+
+//   console.log(ourRequest.responseText);
+  
+//   // var productData = JSON.parse(jsonData.responseText);
+//   // console.log(productData);
+// }
+
+// var ourRequest = new XMLHttpRequest();
+//   ourRequest.open("GET", "");
+//   ourRequest.onload = function() {
+//   console.log(ourRequest.responseText);
+//   }
+//   ourRequest.send();
+
+
+
 window.onload = function() {
+  
   onResize();
-  thankYou();
+  // thankYou();
 
   window.addEventListener("resize", onResize);
 
@@ -120,9 +145,9 @@ window.onload = function() {
     quantityCounter.textContent = selectedQuantity;
   }
 
-  function thankYou() {
-    console.log("*********");
-    console.log("Thank you for including me in this code challenge, I appreciate the opportunity to be in consideration! -Rob");
-    console.log("*********");
-  }
+  // function thankYou() {
+  //   console.log("*********");
+  //   console.log("Thank you for including me in this code challenge, I appreciate the opportunity to be in consideration! -Rob");
+  //   console.log("*********");
+  // }
 };
