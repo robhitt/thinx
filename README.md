@@ -11,10 +11,13 @@ Creation of a sample product page including:
 * Clothing size dropdown
 * Responsive design
 * Cross browser compatible
+* Generate API / JSON
+  * Created a fake JSON product feed to dynamically build the product image and product attributes
+  * Uploaded json file to github pages to avoid CORS issues on the XMLHttp request
 
 ## Links
 
-* Live Example - https://www.robhitt.com/thinx
+* Live Example - https://robhitt.github.io/thinx
 * Github - https://www.github.com/robhitt/thinx
 
 ## Installation
