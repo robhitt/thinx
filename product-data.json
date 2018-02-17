@@ -1,0 +1,23 @@
+{
+  "product": {
+    "isAvailable": true,
+    "price": "$35.00",
+    "availableSizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "productImages": [
+      "./assets/images/highwaist_black_front_2_1024x1024.jpg",
+      "./assets/images/highwaist_black_front_3_1024x1024.jpg",
+      "./assets/images/highwaist_black_front_4_1024x1024.jpg",
+      "./assets/images/highwaist_black_front_1024x1024_1.jpg",
+      "./assets/images/highwaist_black_side_1024x1024.jpg",
+      "./assets/images/highwaist_black_back_1024x1024.jpg"
+    ]
+  }
+
+}
