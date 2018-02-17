@@ -184,6 +184,10 @@ button {
   vertical-align: top;
 }
 
+.quantity .remove-letter-spacing {
+  letter-spacing: 0;
+}
+
 .custom-dropdown {
   position: relative;
   display: inline-block;
@@ -375,27 +379,36 @@ a.whats-my-size {
 
   .carousel-indicators {
     position: relative;
-    margin-top: 20px;
+    margin-top: 0;
+    background-color: rgb(248, 248, 249);
+    margin-bottom: initial;
   }
 
-  .carousel-indicators .active {
+  .carousel-indicators .active > .carousel-dot {
     background-color: rgba(0, 0, 0, 1);
   }
 
+  .carousel-indicators .active {
+    background-color: rgb(248, 248, 249);
+  }
+  
   .carousel-indicators li {
-    background-color: rgba(0, 0, 0, .5);
-    width: 7px;
-    height: 7px;
-    border-radius: 100%;
-    margin: 0 8px;
     cursor: pointer;
+    background-color: rgb(248, 248, 249);
+    width: 20px;
+    height: 45px;
+    margin: 0 2px;
   }
 
-  .carousel-indicators li::after {
-    bottom: -3px;
-    left: -3px;
-    width: 15px;
-    height: 15px;
+  .carousel-dot {
+    background-color: rgba(0, 0, 0, .5);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .hero-left,
@@ -405,6 +418,14 @@ a.whats-my-size {
     margin: 50px auto 0;
     height: auto;
     position: relative;
+  }
+
+  .hero-left {
+    margin: 30px auto 0;
+  }
+
+  .hero-right {
+    margin: 50px auto 0;
   }
 
   .hero-left-content,
@@ -426,7 +447,6 @@ a.whats-my-size {
     text-align: center;
   }
 
-  /* Below the fold */
   .category-container {
     margin: 15px auto 0;
   }

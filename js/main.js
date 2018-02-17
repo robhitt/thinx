@@ -1,46 +1,30 @@
-window.onload = function () {
+window.onload = function() {
   onResize();
+  thankYou();
 
   window.addEventListener("resize", onResize);
 
   function onResize() {
     // Set height of hero container at any
-    // point the user changes browser height
+    // point the user changes browser dimensions
     let windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     const heroContainer = document.querySelector(".hero-container");
-    heroContainer.style.height = windowHeight;
+    heroContainer.style.height = windowHeight;  
 
     // This is necessary to call on initial load in the event the user refreshes
     // while already on the current page and is scrolled below the fold
-    checkSlide();
-  }
-
-  // Debounce function for use with scroller for performance and usability
-  function debounce(func, wait = 20, immediate = true) {
-    let timeout;
-    return function () {
-      let context = this,
-        args = arguments;
-      let later = function () {
-        timeout = null;
-        if (!immediate) func.apply(context, args);
-      };
-      let callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) func.apply(context, args);
-    };
+    belowTheFoldChecker();
   }
   
   // Prevent fixed outer hero columns from scrolling below the fold
-  window.addEventListener("scroll", debounce(checkSlide, 15));
-
-  function checkSlide(event) {
+  window.addEventListener("scroll", belowTheFoldChecker);
+  
+  function belowTheFoldChecker(event) {    
     const heroContainer = document.querySelector(".hero-container");
     const heightToHorizonLine = heroContainer.offsetHeight;
     const totalPixelsScrolled = window.scrollY + window.innerHeight;
     const heroLeft = document.querySelector(".hero-left");
-    const heroRight = document.querySelector(".hero-right");
+    const heroRight = document.querySelector(".hero-right");    
 
     if (totalPixelsScrolled < heightToHorizonLine) {
       heroLeft.classList.remove("sticky-bottom");
@@ -99,12 +83,12 @@ window.onload = function () {
   }
 
   // Toggle product color picker
-  const colorBoxBlack = document.querySelector('.color-box-black');
-  const colorBoxBeige = document.querySelector('.color-box-beige');
-  colorBoxBlack.addEventListener("click", toggleColorPickerBlack);
-  colorBoxBeige.addEventListener("click", toggleColorPickerBeige);
+  const colorBoxBlack = document.querySelector(".color-box-black");
+  const colorBoxBeige = document.querySelector(".color-box-beige");
   const blackCheckMark = document.querySelector(".color-box-black-check");
   const beigeCheckMark = document.querySelector(".color-box-beige-check");
+  colorBoxBlack.addEventListener("click", toggleColorPickerBlack);
+  colorBoxBeige.addEventListener("click", toggleColorPickerBeige);
 
   function toggleColorPickerBlack() {
     blackCheckMark.classList.add("color-box-black-check-active");
@@ -134,5 +118,11 @@ window.onload = function () {
   function increaseQuantity() {
     selectedQuantity += 1;
     quantityCounter.textContent = selectedQuantity;
+  }
+
+  function thankYou() {
+    console.log("*********");
+    console.log("Thank you for including me in this code challenge, I appreciate the opportunity to be in consideration! -Rob");
+    console.log("*********");
   }
 };
