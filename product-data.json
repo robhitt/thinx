@@ -1,6 +1,5 @@
 {
   "product": {
-    "isAvailable": true,
     "price": "$35.00",
     "availableSizes": [
       "XS",
@@ -11,12 +10,30 @@
       "XXL"
     ],
     "productImages": [
-      "./assets/images/highwaist_black_front_2_1024x1024.jpg",
-      "./assets/images/highwaist_black_front_3_1024x1024.jpg",
-      "./assets/images/highwaist_black_front_4_1024x1024.jpg",
-      "./assets/images/highwaist_black_front_1024x1024_1.jpg",
-      "./assets/images/highwaist_black_side_1024x1024.jpg",
-      "./assets/images/highwaist_black_back_1024x1024.jpg"
+      {
+        "img": "./assets/images/highwaist_black_front_2_1024x1024.jpg",
+        "alt": "High Waist Black Back Underwear Front"
+      },
+      {
+        "img": "./assets/images/highwaist_black_front_3_1024x1024.jpg",
+        "alt": "High Waist Black Back Underwear Front"  
+      },
+      {
+        "img": "./assets/images/highwaist_black_front_4_1024x1024.jpg",
+        "alt": "High Waist Black Back Underwear Front"  
+      },
+      {
+        "img": "./assets/images/highwaist_black_front_1024x1024_1.jpg",
+        "alt": "High Waist Black Back Underwear Front"  
+      },
+      {
+        "img": "./assets/images/highwaist_black_side_1024x1024.jpg",
+        "alt": "High Waist Black Back Underwear Side"  
+      },
+      {
+        "img": "./assets/images/highwaist_black_back_1024x1024.jpg",
+        "alt": "High Waist Black Back Underwear Back"  
+      }
     ]
   }
 }

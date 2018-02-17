@@ -293,6 +293,7 @@ a.whats-my-size {
   text-align: center;
   width: 100%;
   background-color: rgb(255, 255, 255);
+  display: none;
 }
 
 .category-container {

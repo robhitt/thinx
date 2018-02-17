@@ -1,4 +1,5 @@
  window.onload = function () {
+   /********** Build out page structure from API **********/
    let productDataURL = "https://robhitt.github.io/thinx/product-data.json";
 
    let ourRequest = new XMLHttpRequest();
@@ -30,53 +31,90 @@
      const carouselIndicators = document.querySelector(".carousel-indicators");
      const productImages = data.product.productImages;
      let individualPhoto,
-         carouselIndicator;
+       carouselIndicator;
 
-     productImages.forEach((imageURL, index) => {
+     productImages.forEach((imageContent, index) => {
        const dataImagePosition = index + 1;
 
        if (index === 0) {
          individualPhoto = `
           <div class="carousel-item active">
-            <img data-img="${dataImagePosition}" class="d-block w-100 product-img zoom-in" src="${imageURL}" alt="High Waist Black Back Underwear Front">
+            <img data-img="${dataImagePosition}" class="d-block w-100 product-img zoom-in" src="${imageContent.img}" alt="${imageContent.alt}">
           </div>
-          `
-          
-          carouselIndicator = `
+          `;
+
+         carouselIndicator = `
           <li data-target="#mobile-carousel" data-slide-to="${index}" class="active">
             <div class="carousel-dot"></div>
           </li>
-          `
+          `;
 
          carouselImageContainer.insertAdjacentHTML('beforeend', individualPhoto);
          carouselIndicators.insertAdjacentHTML('beforeend', carouselIndicator);
        } else {
          individualPhoto = `
         <div class="carousel-item">
-        <img data-img="${dataImagePosition}" class="d-block w-100 product-img zoom-in" src="${imageURL}" alt="High Waist Black Back Underwear Front">
+        <img data-img="${dataImagePosition}" class="d-block w-100 product-img zoom-in" src="${imageContent.img}" alt="${imageContent.alt}">
         </div>
-        `
+        `;
 
-        carouselIndicator = `
+         carouselIndicator = `
           <li data-target="#mobile-carousel" data-slide-to="${index}">
             <div class="carousel-dot"></div>
           </li>
-          `
+          `;
          carouselImageContainer.insertAdjacentHTML('beforeend', individualPhoto);
          carouselIndicators.insertAdjacentHTML('beforeend', carouselIndicator);
        }
+     });
 
+     // Render images for desktop product image scroller
+     const heroDesktop = document.querySelector(".hero-desktop");
+     let desktopPhoto;
+
+     productImages.forEach((imageContent, index) => {
+       const dataImagePosition = index + 1;
+
+       desktopPhoto = `
+        <div class="hero-full-height">
+          <img data-img="${dataImagePosition}" src="${imageContent.img}" alt="${imageContent.alt}" class="img-desktop product-img">
+          </div>
+        `;
+       heroDesktop.insertAdjacentHTML('beforeend', desktopPhoto);
        const productImg = document.querySelectorAll(".product-img");
        productImg.forEach(image => image.addEventListener("click", toggleModal));
      });
 
-     // Render images for desktop product image scroller
-     
+     // Render images for modal
+     const customModal = document.querySelector(".custom-modal");
+     let modalPhoto;
 
+     productImages.forEach((imageContent, index) => {
+       const dataImagePosition = index + 1;
+       modalPhoto = `
+        <div class="modal-${dataImagePosition}">
+          <img src="${imageContent.img}" alt="${imageContent.alt}" class="product-img-modal">
+        </div>
+      `;
+
+       customModal.insertAdjacentHTML('beforeend', modalPhoto);
+     });
+
+     const productImg = document.querySelectorAll(".product-img");
+     const productImgModal = document.querySelectorAll(".product-img-modal");
+     productImg.forEach(image => image.addEventListener("click", toggleModal));
+     productImgModal.forEach(image => image.addEventListener("click", toggleModal));
+
+     // Hack ot hide the below the fold view until hero is loaded 
+     // to prevent a race condition / page glitch
+     const belowTheFold = document.querySelector(".below-the-fold");
+     belowTheFold.style.display = "block";
+     belowTheFoldChecker();
    }
 
+   /********** Page Logic **********/
    onResize();
-   //  thankYou();
+   thankYou();
 
    window.addEventListener("resize", onResize);
 
@@ -86,10 +124,6 @@
      let windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
      const heroContainer = document.querySelector(".hero-container");
      heroContainer.style.height = windowHeight;
-
-     // This is necessary to call on initial load in the event the user refreshes
-     // while already on the current page and is scrolled below the fold
-     belowTheFoldChecker();
    }
 
    // Prevent fixed outer hero columns from scrolling below the fold
@@ -111,14 +145,10 @@
      }
    }
 
-   // Toggle modal logic for when a user clicks
-   // a product image to allow zooming in and out 
+   // Toggle modal logic allowing zooming in and out 
+   // on product image
    let modalIsOpen = false;
    let heightToSelectedImage;
-   const productImg = document.querySelectorAll(".product-img");
-   const productImgModal = document.querySelectorAll(".product-img-modal");
-   productImg.forEach(image => image.addEventListener("click", toggleModal));
-   productImgModal.forEach(image => image.addEventListener("click", toggleModal));
 
    function toggleModal(event) {
      const mainContainer = document.querySelector(".main-container");
@@ -196,9 +226,9 @@
      quantityCounter.textContent = selectedQuantity;
    }
 
-   //  function thankYou() {
-   //    console.log("*********");
-   //    console.log("Thank you for including me in this code challenge, I appreciate the opportunity to be in consideration! -Rob");
-   //    console.log("*********");
-   //  }
+   function thankYou() {
+     console.log("*********");
+     console.log("Thank you for including me in this code challenge, I appreciate the opportunity to be in consideration! -Rob");
+     console.log("*********");
+   }
  };
