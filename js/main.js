@@ -4,35 +4,37 @@
 
    let productDataRequest = new XMLHttpRequest();
    productDataRequest.open("GET", productDataURL);
-   productDataRequest.onload = function() {
+   productDataRequest.onload = function () {
      if (productDataRequest.status >= 200 && productDataRequest.status < 400) {
-      let productData = JSON.parse(productDataRequest.responseText);
-      renderHTML(productData);
+       let productData = JSON.parse(productDataRequest.responseText);
+       renderHTML(productData);
      } else {
-      console.log("Connected to server but returned an error");
+       console.log("Connected to server but returned an error");
      }
    }
 
-   productDataRequest.onerror = function() {
-    console.log("Data not received."); 
+   productDataRequest.onerror = function () {
+     console.log("Data not received.");
    }
 
    productDataRequest.send();
 
+   // Build webpage dynamically based off JSON data
    function renderHTML(data) {
      // Render product price
      const price = document.querySelector(".price");
-     price.innerHTML = data.product.price;
+     let priceNode = document.createTextNode(data.product.price);
+     price.appendChild(priceNode);
 
      // Render size menu for dropdown
      const sizeSelector = document.querySelector(".size-selector");
      const availableSizes = data.product.availableSizes;
 
      availableSizes.forEach(size => {
-       const optionEl = document.createElement("option");
+       const option = document.createElement("option");
        let sizeNode = document.createTextNode(size);
-       optionEl.appendChild(sizeNode);
-       sizeSelector.appendChild(optionEl);
+       option.appendChild(sizeNode);
+       sizeSelector.appendChild(option);
      });
 
      // Render images for mobile product carousel
@@ -40,7 +42,7 @@
      const carouselIndicators = document.querySelector(".carousel-indicators");
      const productImages = data.product.productImages;
      let individualPhoto,
-       carouselIndicator;
+         carouselIndicator;
 
      productImages.forEach((imageContent, index) => {
        const dataImagePosition = index + 1;
@@ -72,6 +74,7 @@
             <div class="carousel-dot"></div>
           </li>
           `;
+
          carouselImageContainer.insertAdjacentHTML("beforeend", individualPhoto);
          carouselIndicators.insertAdjacentHTML("beforeend", carouselIndicator);
        }
@@ -89,9 +92,8 @@
           <img data-img="${dataImagePosition}" src="${imageContent.img}" alt="${imageContent.alt}" class="img-desktop product-img">
           </div>
         `;
+
        heroDesktop.insertAdjacentHTML("beforeend", desktopPhoto);
-       const productImg = document.querySelectorAll(".product-img");
-       productImg.forEach(image => image.addEventListener("click", toggleModal));
      });
 
      // Render images for modal
@@ -100,6 +102,7 @@
 
      productImages.forEach((imageContent, index) => {
        const dataImagePosition = index + 1;
+
        modalPhoto = `
         <div class="modal-${dataImagePosition}">
           <img src="${imageContent.img}" alt="${imageContent.alt}" class="product-img-modal">
@@ -114,8 +117,8 @@
      productImg.forEach(image => image.addEventListener("click", toggleModal));
      productImgModal.forEach(image => image.addEventListener("click", toggleModal));
 
-     // Hack ot hide the below the fold view until hero is loaded 
-     // to prevent a race condition / page glitch
+     // Hack to hide below the fold view to prevent 
+     // page glitch on page load while product content is built
      const belowTheFold = document.querySelector(".below-the-fold");
      belowTheFold.style.display = "block";
      belowTheFoldChecker();
@@ -130,8 +133,8 @@
    function onResize() {
      // Set height of hero container at any
      // point the user changes browser dimensions
-     let windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
      const heroContainer = document.querySelector(".hero-container");
+     let windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
      heroContainer.style.height = windowHeight;
    }
 
@@ -154,8 +157,8 @@
      }
    }
 
-   // Toggle modal logic allowing zooming in and out 
-   // on product image
+   // Toggle modal logic allowing zooming 
+   // in and out on any product image
    let modalIsOpen = false;
    let heightToSelectedImage;
 
@@ -163,37 +166,20 @@
      const mainContainer = document.querySelector(".main-container");
      const modal = document.querySelector(".custom-modal");
 
-     if (modalIsOpen) {
-       modalIsOpen = !modalIsOpen;
-     } else {
-       modalIsOpen = !modalIsOpen;
-       heightToSelectedImage = window.scrollY;
-     }
+     if (!modalIsOpen) heightToSelectedImage = window.scrollY;
+     
+     modalIsOpen = !modalIsOpen;
 
-     if (window.innerWidth > 1024) {
-       if (mainContainer.style.display === "none") {
-         mainContainer.style.display = "block";
-         modal.style.display = "none";
-         window.scrollTo(0, heightToSelectedImage);
-       } else {
-         mainContainer.style.display = "none";
-         modal.style.display = "block";
-         let targetImage = event.currentTarget.dataset.img;
-         const modalFocus = document.querySelector(`.modal-${targetImage}`);
-         modalFocus.scrollIntoView();
-       }
+     if (mainContainer.style.display === "none") {
+       mainContainer.style.display = "block";
+       modal.style.display = "none";
+       window.scrollTo(0, (window.innerWidth > 1024 ? heightToSelectedImage : 0));
      } else {
-       if (mainContainer.style.display === "none") {
-         mainContainer.style.display = "block";
-         modal.style.display = "none";
-         window.scrollTo(0, 0);
-       } else {
-         mainContainer.style.display = "none";
-         modal.style.display = "block";
-         let targetImage = event.currentTarget.dataset.img;
-         const modalFocus = document.querySelector(`.modal-${targetImage}`);
-         modalFocus.scrollIntoView();
-       }
+       mainContainer.style.display = "none";
+       modal.style.display = "block";
+       let targetImage = event.currentTarget.dataset.img;
+       const modalFocus = document.querySelector(`.modal-${targetImage}`);
+       modalFocus.scrollIntoView();
      }
    }
 

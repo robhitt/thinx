@@ -6,7 +6,14 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Graphik Medium";
+  font-family: "Graphik Medium", sans-serif;
+}
+
+a,
+a:visited,
+a:active,
+a:hover {
+  color:rgb(0, 0, 0);
 }
 
 button {
@@ -39,13 +46,13 @@ button {
   height: 100vh;
 }
 
+.hero-left {
+  left: 0;
+}
+
 .sticky-bottom {
   position: absolute;
   bottom: 0;
-}
-
-.hero-left {
-  left: 0;
 }
 
 .hero-left-mobile,
@@ -118,15 +125,19 @@ button {
   text-align: left;
 }
 
+.color-box-white,
+.color-box-black,
+.color-box-beige {
+  font-size: 12px;
+}
+
 .color-box-white {
   background-color: rgb(248, 248, 249);
-  font-size: 12px;
 }
 
 .color-box-black {
   background-color: rgb(0, 0, 0);
   color: rgb(255, 255, 255);
-  font-size: 12px;
 }
 
 .color-box-black-check-active:after {
@@ -135,7 +146,6 @@ button {
 
 .color-box-beige {
   background-color: rgb(242, 217, 165);
-  font-size: 12px;
 }
 
 .color-box-beige-check-active:after {
@@ -219,21 +229,10 @@ button {
   display: none;
 }
 
-.custom-dropdown::before,
-.custom-dropdown::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-}
-
-.custom-dropdown::after {
-  content: "\002304";
-  height: 1em;
-  font-size: 2em;
-  line-height: 1;
-  right: .1em;
-  top: 40%;
-  margin-top: -.5em;
+.custom-dropdown > select {
+  background-image: url(https://cdn.shopify.com/s/files/1/0795/1599/files/icon__arrow.svg);
+  background-repeat: no-repeat;
+  background-position: calc(100% - 8px), 50%;
 }
 
 .custom-dropdown::before {
@@ -244,7 +243,7 @@ button {
 }
 
 .custom-dropdown::after {
-  color: rgba(0,0,0,.6);
+  color: rgba(0,0,0);
 }
 
 .custom-dropdown select[disabled] {
@@ -255,7 +254,7 @@ a.whats-my-size {
   font-size: 8px;
   text-decoration: underline;
   letter-spacing: 1px;
-  margin-bottom: 18px;
+  margin-bottom: 25px;
   color: initial;
   display: inline-block;
 }
@@ -264,13 +263,21 @@ a.whats-my-size {
   width: 100%;
   background-color: rgb(0, 0, 0);
   color: rgb(255, 255, 255);
-  padding: 3px;
+  padding: 4px 3px;
   letter-spacing: 1px;
   text-align: center;
   text-transform: lowercase;
   font-size: 12px;
   margin-bottom: 15px;
   border: 0;
+}
+
+.add-to-cart:hover {
+  width: 100%;
+  background-color: rgb(248, 248, 249);
+  color: rgb(0, 0, 0);
+  outline: 1px solid rgb(0, 0, 0);
+  transition: background-color 0.1s ease-in;
 }
 
 .add-to-cart:active {
