@@ -2,13 +2,22 @@
    /********** Build out page structure from API **********/
    let productDataURL = "https://robhitt.github.io/thinx/product-data.json";
 
-   let ourRequest = new XMLHttpRequest();
-   ourRequest.open("GET", productDataURL)
-   ourRequest.onload = function () {
-     let ourData = JSON.parse(ourRequest.responseText);
-     renderHTML(ourData);
+   let productDataRequest = new XMLHttpRequest();
+   productDataRequest.open("GET", productDataURL);
+   productDataRequest.onload = function() {
+     if (productDataRequest.status >= 200 && productDataRequest.status < 400) {
+      let productData = JSON.parse(productDataRequest.responseText);
+      renderHTML(productData);
+     } else {
+      console.log("Connected to server but returned an error");
+     }
    }
-   ourRequest.send();
+
+   productDataRequest.onerror = function() {
+    console.log("Data not received."); 
+   }
+
+   productDataRequest.send();
 
    function renderHTML(data) {
      // Render product price
@@ -49,8 +58,8 @@
           </li>
           `;
 
-         carouselImageContainer.insertAdjacentHTML('beforeend', individualPhoto);
-         carouselIndicators.insertAdjacentHTML('beforeend', carouselIndicator);
+         carouselImageContainer.insertAdjacentHTML("beforeend", individualPhoto);
+         carouselIndicators.insertAdjacentHTML("beforeend", carouselIndicator);
        } else {
          individualPhoto = `
         <div class="carousel-item">
@@ -63,8 +72,8 @@
             <div class="carousel-dot"></div>
           </li>
           `;
-         carouselImageContainer.insertAdjacentHTML('beforeend', individualPhoto);
-         carouselIndicators.insertAdjacentHTML('beforeend', carouselIndicator);
+         carouselImageContainer.insertAdjacentHTML("beforeend", individualPhoto);
+         carouselIndicators.insertAdjacentHTML("beforeend", carouselIndicator);
        }
      });
 
@@ -80,7 +89,7 @@
           <img data-img="${dataImagePosition}" src="${imageContent.img}" alt="${imageContent.alt}" class="img-desktop product-img">
           </div>
         `;
-       heroDesktop.insertAdjacentHTML('beforeend', desktopPhoto);
+       heroDesktop.insertAdjacentHTML("beforeend", desktopPhoto);
        const productImg = document.querySelectorAll(".product-img");
        productImg.forEach(image => image.addEventListener("click", toggleModal));
      });
@@ -97,7 +106,7 @@
         </div>
       `;
 
-       customModal.insertAdjacentHTML('beforeend', modalPhoto);
+       customModal.insertAdjacentHTML("beforeend", modalPhoto);
      });
 
      const productImg = document.querySelectorAll(".product-img");
@@ -231,6 +240,4 @@
      console.log("Thank you for including me in this code challenge, I appreciate the opportunity to be in consideration! -Rob");
      console.log("*********");
    }
-
-   belowTheFoldChecker();
  };
