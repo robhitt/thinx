@@ -231,4 +231,6 @@
      console.log("Thank you for including me in this code challenge, I appreciate the opportunity to be in consideration! -Rob");
      console.log("*********");
    }
+
+   belowTheFoldChecker();
  };
