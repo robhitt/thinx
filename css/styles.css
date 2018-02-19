@@ -142,6 +142,7 @@ button {
 
 .color-box-black-check-active:after {
   content: "\2714";
+  color: rgb(255, 255, 255);
 }
 
 .color-box-beige {
@@ -150,6 +151,7 @@ button {
 
 .color-box-beige-check-active:after {
   content: "\2714";
+  color: rgb(0, 0, 0);
 }
 
 .quantity-container {
