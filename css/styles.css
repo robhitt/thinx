@@ -140,6 +140,10 @@ button {
   color: rgb(255, 255, 255);
 }
 
+.color-box-black-check-active {
+  color: rgb(255, 255, 255);
+}
+
 .color-box-black-check-active:after {
   content: "✔\fe0e";
   color: rgb(255, 255, 255);
@@ -150,8 +154,17 @@ button {
 }
 
 .color-box-beige-check-active:after {
+<<<<<<< HEAD
   content: "✔\fe0e";
   color: rgb(0, 0, 0;
+=======
+  color: rgb(0, 0, 0);
+}
+
+.color-box-beige-check-active:after {
+  content: "\2714";
+  color: rgb(0, 0, 0);
+>>>>>>> 26292ee3ee0cad228add7652fdd1615d6e8ce99d
 }
 
 .quantity-container {
