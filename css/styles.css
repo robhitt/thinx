@@ -140,18 +140,17 @@ button {
   color: rgb(255, 255, 255);
 }
 
-.color-box-black-check-active:after {
-  content: "✔\fe0e";
-  color: rgb(255, 255, 255);
-}
-
 .color-box-beige {
   background-color: rgb(242, 217, 165);
 }
 
-.color-box-beige-check-active:after {
-  content: "✔\fe0e";
+/* safari fix */
+.color-box-beige:active {
   color: rgb(0, 0, 0);
+}
+
+.check-mark-hidden {
+  display: none;
 }
 
 .quantity-container {

@@ -192,13 +192,13 @@
    colorBoxBeige.addEventListener("click", toggleColorPickerBeige);
 
    function toggleColorPickerBlack() {
-     blackCheckMark.classList.add("color-box-black-check-active");
-     beigeCheckMark.classList.remove("color-box-beige-check-active");
+     blackCheckMark.classList.remove("check-mark-hidden");
+     beigeCheckMark.classList.add("check-mark-hidden");
    }
 
    function toggleColorPickerBeige() {
-     blackCheckMark.classList.remove("color-box-black-check-active");
-     beigeCheckMark.classList.add("color-box-beige-check-active");
+    blackCheckMark.classList.add("check-mark-hidden");
+    beigeCheckMark.classList.remove("check-mark-hidden");
    }
 
    // Product quantity counter
