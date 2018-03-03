@@ -4,7 +4,7 @@
 
    let productDataRequest = new XMLHttpRequest();
    productDataRequest.open("GET", productDataURL);
-   productDataRequest.onload = function () {
+   productDataRequest.onload = function() {
      if (productDataRequest.status >= 200 && productDataRequest.status < 400) {
        let productData = JSON.parse(productDataRequest.responseText);
        renderHTML(productData);
@@ -126,7 +126,6 @@
 
    /********** Page Logic **********/
    onResize();
-   thankYou();
 
    window.addEventListener("resize", onResize);
 
@@ -219,11 +218,5 @@
    function increaseQuantity() {
      selectedQuantity += 1;
      quantityCounter.textContent = selectedQuantity;
-   }
-
-   function thankYou() {
-     console.log("*********");
-     console.log("Thank you for including me in this code challenge, I appreciate the opportunity to be in consideration! -Rob");
-     console.log("*********");
    }
  };

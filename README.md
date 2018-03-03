@@ -1,4 +1,4 @@
-# THINX Code Challenge
+# ECOMMERCE PRODUCT PAGE CREATION
 
 ## Synopsis
 
